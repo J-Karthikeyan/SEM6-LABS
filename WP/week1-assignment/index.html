@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conference Registration Form</title>
+</head>
+<body>
+    <div>
+        <h1>Conference Registration Form</h1>
+    </div>
+    <form action="/submit" method="post" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Participant Details</legend>
+            <label for="name">Full Name: </label>
+            <input type="text" id="name" name="name" required placeholder="Enter your full name"><br>
+
+            <label for="email">Email: </label>
+            <input type="email" id="email" name="email" required placeholder="example@domain.com"><br>
+
+            <label for="phno">Phone Number: </label>
+            <input type="tel" id="phno" name="phno" pattern="[0-9]{10}" required placeholder="1234567890"><br>
+            
+            <label for="age">Age: </label>
+            <input type="number" id="age" name="age" min="18" max="60" required><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Event Preferences</legend>
+            <label for="events">Select up to two events:</label>
+            <select id="events" name="events" multiple size="5">
+                <option value="coding_contest">Coding Contest</option>
+                <option value="hackathon">Hackathon</option>
+                <option value="paper_presentation">Paper Presentation</option>
+                <option value="robotics_challenge">Robotics Challenge</option>
+                <option value="keynote_session">Keynote Session</option>
+            </select>
+            <p>Hold Ctrl (Windows) or Command (Mac) to select multiple options.</p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Accommodation Details</legend>
+            <label>Accommodation Type :</label>
+            <input type="radio" id="hostel" name="accommodation" value="Hostel" required>
+            <label for="hostel">Hostel</label>
+
+            <input type="radio" id="hotel" name="accommodation" value="Hotel">
+            <label for="hotel">Hotel</label>
+
+            <input type="radio" id="none" name="accommodation" value="None">
+            <label for="none">None</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Dietary Preferences</legend>
+            <label>Dietary Preferences:</label>
+            <input type="checkbox" id="vegetarian" name="dietary[]" value="Vegetarian">
+            <label for="vegetarian">Vegetarian</label>
+
+            <input type="checkbox" id="nonVegetarian" name="dietary[]" value="Non-Vegetarian">
+            <label for="nonVegetarian">Non-Vegetarian</label>
+
+            <input type="checkbox" id="vegan" name="dietary[]" value="Vegan">
+            <label for="vegan">Vegan</label>
+
+            <input type="checkbox" id="otherDiet" name="dietary[]" value="Other">
+            <label for="otherDiet">Other (Specify below)</label><br>
+
+            <label for="otherDietText">If Other, specify:</label>
+            <input type="text" id="otherDietText" name="otherDietText" disabled>
+        </fieldset>
+
+        <fieldset>
+            <legend>Additional Info</legend>
+            <label for="documents">Upload Student ID (PDF only, max 5 MB):</label>
+            <input type="file" id="documents" name="documents" accept=".pdf" required><br><br>
+
+            <label for="comments">Comments/Requests:</label><br>
+            <textarea id="comments" name="comments" maxlength="300" placeholder="Write your comments here (optional)..."></textarea>
+        </fieldset>
+
+        <fieldset>
+            <legend>Consent and Submission</legend>
+            <input type="checkbox" id="consent" name="consent" required>
+            <label for="consent">I agree to the terms and conditions.</label><br><br>
+
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </fieldset>
+    </form>
+
+    <script>
+        document.getElementById("otherDiet").addEventListener("change", function () {
+            const otherDietInput = document.getElementById("otherDietText");
+            otherDietInput.disabled = !this.checked;
+        });
+    </script>
+</body>
+</html>
