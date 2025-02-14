@@ -44,6 +44,7 @@ for epoch in range(epochs):
 
 plt.plot(losses)
 plt.xlabel("Epochs")
+
 plt.ylabel("MSE Loss")
 plt.show()
 
